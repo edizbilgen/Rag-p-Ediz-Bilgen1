@@ -96,10 +96,28 @@ public class main {
     }
 
     public static int bestDayOfMonth(int month) {
+        if (month < 0 || month >= MONTHS) return -1;
+
+        int maxDay = 1;
+        int maxTotal = Integer.MIN_VALUE;
+
+        for (int d = 0; d < DAYS; d++) {
+            int total = 0;
+            for (int c = 0; c < COMMS; c++) {
+                total += data[month][d][c];
+            }
+            if (total > maxTotal) {
+                maxTotal = total;
+                maxDay = d + 1; // Convert to 1-indexed
+            }
+        }
+        return maxDay;
+    }
 
     }
 
     public static String bestMonthForCommodity(String comm) {
+
 
     }
 
